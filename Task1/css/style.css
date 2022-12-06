@@ -1,0 +1,40 @@
+* {
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: beige;
+}
+
+.container {
+    max-width: 30vw;
+    display: grid;
+    grid-auto-columns: 1fr;
+    margin: 200px auto;
+}
+
+button {
+    height: 10vh;
+    border-radius: 20px;
+    font-size: larger;
+}
+
+button:active{
+    background-color: coral;
+    color: whitesmoke;
+}
+
+#timers {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer {
+    height: 7vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
