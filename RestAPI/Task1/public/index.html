@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Task 1</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="taskList">
+            <div class="header">
+                <h1>TASK MANAGER</h1>
+                <button id="addTaskForm">
+                    <h3>ADD</h3>
+                </button>
+            </div>
+            <div class="tasks"></div>
+        </div>
+
+        <form class="task__form">
+            <h1>Add a new Task</h1>
+            <div>
+                <label for="task__add--title">Task Title:</label>
+                <input type="text" name="task__add--title" id="task__add--title">
+            </div>
+            <div>
+                <label for="task__add--description">Task Description: </label>
+                <input type="text" name="task__add--description" id="task__add--description">
+            </div>
+            <button id="submitNewTask">Add New Task</button>
+            <button id="cancelNewTask">Go Back to List</button>
+        </form>
+
+    </div>
+
+    <template class="template__list">
+        <div class="task">
+                <div class="task__title"></div>
+                <div class="task__description"></div>
+                <div class="task__done"></div>
+                <button id="btn__edit"> EDIT </button>
+                <button id="btn__delete"> DELETE</button>
+            </div>
+        </div>
+    </template>
+
+
+    <script src="dist/bundle.js"></script>
+</body>
+
+</html>

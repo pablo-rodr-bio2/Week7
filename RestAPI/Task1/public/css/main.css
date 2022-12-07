@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: bisque;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    max-width: 50vw;
+    min-height: 60vh;
+    margin: 30px auto;
+    border: 5px solid steelblue;
+    border-radius: 20px;
+    padding: 20px;
+
+}
+
+.task__form {
+    display: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#addTaskForm {
+    min-width: 15vw;
+    min-height: 10vh;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.task {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(240, 105, 9);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.task__title {
+    font-size: larger;
+    font-weight: bold;
+}
+
+/* MODAL */
+
