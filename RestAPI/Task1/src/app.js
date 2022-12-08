@@ -40,10 +40,7 @@ tasks.addEventListener('click', (e) => {
     }
     if (e.target.id === 'btn__edit') {
         const id = e.target.parentElement.id
-        taskManager.renderModal(id)
-        // const divTask = e.target.parentElement
-        // taskManager.updateTask(divTask)
-        
+        taskManager.renderModal(id)        
     }
     if (e.target.name === 'isDone') {
         const id = e.target.parentElement.parentElement.id

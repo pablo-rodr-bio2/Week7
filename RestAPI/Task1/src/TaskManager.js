@@ -1,5 +1,6 @@
 import { getAll, remove, createTask, getById, update } from "./api"
 
+// util functions, refactor to another file
 const getRndInteger = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -8,6 +9,7 @@ const changeTask = (task) => {
     task.done = !task.done
     return task
 }
+// util funcitons 
 
 export class TaskManager {
     constructor(template) {

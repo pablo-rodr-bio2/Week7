@@ -1,0 +1,47 @@
+body {
+    padding: 0;
+    margin: 0
+}
+
+.container {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 20px auto;
+    max-width: 900px;
+    gap: 5px;
+}
+
+.searcher {
+    grid-column: span 4;
+
+}
+
+.country__list {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.country__card {
+    text-align: center;
+    border: 2px solid;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding: 10px auto;
+    height: 30vh;
+    display: grid;
+    grid-template-columns: 1 fr;
+}
+
+.searcher label {
+    display: block;
+    text-align: center;
+}
+
+.searcher input {
+    width: 97.5%;
+    height: 40px;
+    font-size: 17px;
+}
