@@ -34,13 +34,32 @@ document.getElementById('submitNewTask').addEventListener('click', (e) => {
 })
 
 tasks.addEventListener('click', (e) => {
-    if (e.target.id == 'btn__delete') {
+    if (e.target.id === 'btn__delete') {
         const id = e.target.parentElement.id
         taskManager.deleteTask(id).then(() => taskManager.render(tasks))
     }
-    if (e.target.id == 'btn__edit') {
-        const divTask = e.target.parentElement
-        taskManager.updateTask(divTask)
-    }   
+    if (e.target.id === 'btn__edit') {
+        const id = e.target.parentElement.id
+        taskManager.renderModal(id)
+        // const divTask = e.target.parentElement
+        // taskManager.updateTask(divTask)
+        
+    }
+    if (e.target.name === 'isDone') {
+        const id = e.target.parentElement.parentElement.id
+        taskManager.toggleTask(id).then(() => taskManager.render(tasks))
+    }
 
 })
+
+document.getElementById('submitEditTask').addEventListener('click', (e) => {
+    e.preventDefault()
+    const id = document.getElementById('submitEditTask').className
+    const title = document.getElementById('task__edit--title').value
+    const description = document.getElementById('task__edit--description').value
+    const done = document.getElementById('doneTaskEdit').checked
+    const updatedTask = {id: id, title: title, description: description, done: done}
+    taskManager.updateTask(updatedTask).then(() => taskManager.render(tasks))
+    document.getElementById("myModal").style.display = 'none'
+})
+

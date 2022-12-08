@@ -24,7 +24,7 @@
         </div>
 
         <form class="task__form">
-            <h1>Add a new Task</h1>
+            <h1>Add a New Task</h1>
             <div>
                 <label for="task__add--title">Task Title:</label>
                 <input type="text" name="task__add--title" id="task__add--title">
@@ -33,20 +33,50 @@
                 <label for="task__add--description">Task Description: </label>
                 <input type="text" name="task__add--description" id="task__add--description">
             </div>
+            
             <button id="submitNewTask">Add New Task</button>
             <button id="cancelNewTask">Go Back to List</button>
         </form>
 
     </div>
 
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="task__form--edit">
+                <h1>Edit Task</h1>
+                <div class="col">
+                    <label for="task__edit--title">Task Title:</label>
+                    <input type="text" name="task__edit--title" id="task__edit--title">
+                </div>
+                <div class="col">
+                    <label for="task__edit--description">Task Description: </label>
+                    <input type="text" name="task__edit--description" id="task__edit--description">
+                </div>
+                <div class="task__edit--done col">
+                    <label class="task__edit--done--label">Is it Done?</label>
+                    <input type="checkbox" name="isDoneEdit" id="doneTaskEdit" value="isDoneEdit">
+                </div>
+                <button id="submitEditTask">EditTask</button>
+            </form>
+        </div>
+
+    </div>
+
     <template class="template__list">
         <div class="task">
-                <div class="task__title"></div>
-                <div class="task__description"></div>
-                <div class="task__done"></div>
-                <button id="btn__edit"> EDIT </button>
-                <button id="btn__delete"> DELETE</button>
+            <div class="task__title"></div>
+            <div class="task__description"></div>
+            <div class="task__done">
+                <input type="checkbox" name="isDone" id="doneTask" value="isDone">
+                <label class="task__done--label"></label>
             </div>
+            <button id="btn__edit"> EDIT </button>
+            <button id="btn__delete"> DELETE</button>
+        </div>
         </div>
     </template>
 

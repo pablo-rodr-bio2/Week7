@@ -1,7 +1,12 @@
-import { getAll, remove, createTask, getById } from "./api"
+import { getAll, remove, createTask, getById, update } from "./api"
 
 const getRndInteger = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min;
+}
+
+const changeTask = (task) => {
+    task.done = !task.done
+    return task
 }
 
 export class TaskManager {
@@ -19,9 +24,10 @@ export class TaskManager {
                     clon.querySelector('.task__title').textContent = task.title
                     clon.querySelector('.task__description').textContent = task.description
                     if (task.done) {
-                        clon.querySelector('.task__done').textContent = 'DONE'
+                        clon.querySelector('.task__done--label').textContent = 'DONE'
+                        clon.getElementById('doneTask').checked = true
                     } else {
-                        clon.querySelector('.task__done').textContent = 'TO DO'
+                        clon.querySelector('.task__done--label').textContent = 'TO DO'
                     }
                     taskList.appendChild(clon)
                 })
@@ -40,35 +46,32 @@ export class TaskManager {
         return createTask(newTask)
     }
 
-    updateTask(divTask) {
-        // Select modal
-        let mpopup = document.getElementById('mpopupBox');
-        console.log(mpLink)
-
-        // Select trigger link
-        let mpLink = document.getElementById("mpopupLink");
-
-        // Select close action element
-        let close = document.getElementsByClassName("close")[0];
-
-        // Open modal once the link is clicked
-     
-        mpLink.onclick = function () {
-            mpopup.style.display = "block";
-        };
-
-        // Close modal once close element is clicked
-        close.onclick = function () {
-            mpopup.style.display = "none";
-        };
-
-        // Close modal when user clicks outside of the modal box
-        window.onclick = function (event) {
-            if (event.target == mpopup) {
-                mpopup.style.display = "none";
-            }
-        };
-
+    updateTask(updatedTask) {
+        return update(updatedTask)
     }
+
+    toggleTask(id) {
+        return getById(id)
+                    .then(changeTask)
+                    .then(update)
+    }
+
+    renderModal(id) {
+        const modal = document.getElementById("myModal");
+        const span = document.getElementsByClassName("close")[0];
+        document.getElementById('submitEditTask').classList.add(id)
+        modal.style.display = "block";
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+    }
+
+    
 
 }

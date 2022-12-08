@@ -34,6 +34,7 @@ const update = async (task) => {
         },
         body: JSON.stringify(task)
     })
+    if (res.status === 200) return 'updated'
 }
 
 const remove = async (id) => {
