@@ -1,47 +1,22 @@
-const URI = 'https://restcountries.com/v3.1/'
+import { fetchAll, fetchByName } from "./api.js"
+import { removeCountries, debounce } from "./util.js"
 
 const countryList = document.querySelector('.country__list')
 
-const removeCountries = () => {
-    // while (countryList.firstChild) countryList.removeChild(countryList.firstChild)   // non performant
-    countryList.innerHTML=''
-}
+const renderCountries = (countries) => {
 
-const debounce = (callback, wait) => {
-    let timerId;
-    return (...args) => {
-      clearTimeout(timerId);
-      timerId = setTimeout(() => {
-        callback(...args);
-      }, wait);
-    };
-}
+    removeCountries(countryList)
 
-
-const fetchAll = async () => {
-    const res = await fetch(`${URI}/all`)
-    const data = await res.json()
-
-    return data
-}
-
-const fetchByName = async (name) => {
-    const res = await fetch(`${URI}/name/${name}`)
-    const data = await res.json()
-    return data
-}
-
-
-const renderCountry = (countries) => {
-    removeCountries()
     countries.forEach(country => {
+
         const template = document.getElementById('countryTemplate')
+
         const clon = template.content.cloneNode(true)
         clon.querySelector('.country__name').textContent = country.name.common
         clon.querySelector('.country__flag').textContent = country.flag
-        let countryLang = clon.querySelector('.country__languages')
         
         if(country.languages) {
+            let countryLang = clon.querySelector('.country__languages')            
             countryLang.textContent = `Languages: ${Object.values(country.languages).join(', ')}`
         }
         
@@ -50,17 +25,19 @@ const renderCountry = (countries) => {
     
 }
 
-fetchAll().then(renderCountry)
-
-document.getElementById('searchName').addEventListener('keydown', debounce((e) => {
+const filterCountriesByName = (e) => {
     e.preventDefault()
     const name = e.target.value
     if(name === '') {
-        fetchAll().then(renderCountry)
+        fetchAll().then(renderCountries)
     } else {
-        fetchByName(name).then(renderCountry)
+        fetchByName(name).then(renderCountries)
     }
-    
-}, 300))
+}
+
+
+fetchAll().then(renderCountries)
+
+document.getElementById('searchName').addEventListener('keydown', debounce((e) => filterCountriesByName(e), 500))
 
 // more lines!
